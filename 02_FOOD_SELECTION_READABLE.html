@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Food Selection Analysis</title><style>
+:root {color-scheme:light; --ink:#23313e; --muted:#5b6c7d; --accent:#126a65; --line:#dce5e8;}
+*{box-sizing:border-box} html{scroll-behavior:smooth} body{margin:0;background:#f3f6f7;color:var(--ink);font:17px/1.75 system-ui,-apple-system,Segoe UI,sans-serif}
+.toolbar{background:#fff;border-bottom:1px solid var(--line);padding:16px max(24px,calc((100vw - 1100px)/2));display:flex;gap:20px;align-items:center;justify-content:space-between}
+.toolbar span{font-size:14px;color:var(--muted)} button{border:1px solid var(--accent);background:#fff;color:var(--accent);padding:9px 16px;border-radius:7px;cursor:pointer;font:inherit;font-size:14px}
+.layout{max-width:1950px;margin:32px auto;padding:0 24px}
+nav{max-width:1100px;margin:0 auto 24px;display:flex;align-items:center;gap:24px} nav strong{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)} nav a{flex:1;color:var(--muted);text-decoration:none;font-size:14px;line-height:1.5;padding:8px 0}nav a:hover{color:var(--accent)}
+main{background:#fff;border:1px solid var(--line);border-radius:12px;padding:36px 32px;min-width:0}main > :not(.comparison){max-width:880px;margin-left:auto;margin-right:auto} h1{font-size:32px;line-height:1.2;margin:0 0 28px;letter-spacing:-.025em}h2{font-size:25px;line-height:1.3;margin:40px 0 18px;padding-top:12px;border-top:2px solid var(--line);scroll-margin-top:20px}h3{font-size:20px;line-height:1.4;color:var(--accent);margin:30px 0 14px}p{margin:14px 0}li{margin:9px 0}ul,ol{padding-left:25px}strong{font-weight:650}hr{border:0;border-top:1px solid var(--line);margin:30px 0}code{font-size:.82em;background:#eef3f5;padding:2px 5px;border-radius:4px;overflow-wrap:anywhere}.hint{font-size:14px;color:var(--muted)}
+.comparison{border:1px solid var(--line);border-radius:8px;background:#f9fbfb;padding:16px;margin:18px 0}.table-scroll{overflow:auto;max-height:78vh;border:1px solid var(--line)}table{border-collapse:separate;border-spacing:0;min-width:1680px;width:100%;font-size:15px;line-height:1.65}th,td{width:12.5%;padding:16px;vertical-align:top;border-right:1px solid var(--line);border-bottom:1px solid var(--line);background:#fff}thead th{position:sticky;top:0;z-index:2;background:#edf4f3;color:var(--accent)}tbody tr:nth-child(even) td{background:#f5f8f8}th:first-child,td:first-child{position:sticky;left:0;z-index:1;box-shadow:2px 0 4px #23313e15}thead th:first-child{z-index:3}tbody tr:first-child td{background:#edf7f3}
+footer{font-size:12px;color:var(--muted);margin-top:35px;border-top:1px solid var(--line);padding-top:16px}
+@media(max-width:850px){.layout{padding:0 16px;margin:20px auto}nav{display:block;margin-bottom:24px}nav a{display:block;padding:7px 0}main{padding:24px}.comparison{padding:8px}h1{font-size:27px}h2{font-size:23px}body{font-size:16px}.toolbar{padding:12px 16px}}
+@media print{body{background:#fff;font-size:10pt}.toolbar,nav,.hint{display:none}.layout{display:block;margin:0;padding:0;max-width:none}main{border:0;border-radius:0;padding:0}main > :not(.comparison){max-width:none}h1{font-size:23pt}h2{font-size:17pt}h3{font-size:14pt;break-after:avoid}h1,h2{break-after:avoid}a{color:inherit}li,p{orphans:3;widows:3}.comparison{padding:0;border:0;background:#fff}.table-scroll{overflow:visible;max-height:none;border:0}table{min-width:0;table-layout:fixed;font-size:8.5pt;line-height:1.4}th,td{padding:7px;position:static!important;box-shadow:none!important;overflow-wrap:break-word}thead{display:table-header-group}tr{break-inside:avoid}@page{size:A4 landscape;margin:12mm}}
+</style></head><body><div class="toolbar"><span>FOOD SELECTION · READING COPY</span><button onclick="window.print()">Print / Save PDF</button></div><div class="layout"><nav aria-label="Contents"><strong>Contents</strong><a href="#section-1">1. Candidate Food Evaluation</a><a href="#section-2">2. Comparative Food Ranking Table</a><a href="#section-3">3. Definitive Recommendation and Technical Justification</a><a href="#section-4">4. Extension: Indonesian Free Nutritious Meals Program (MBG) Multi-Ingredient Scope</a></nav><main><h1>02. Food Selection Analysis for Prototype Development</h1>
+<h2 id="section-1">1. Candidate Food Evaluation</h2>
+<p>To determine the most scientifically defensible food for the initial EIS freshness prototype, six primary candidate food classes were evaluated across ten rigorous criteria:</p>
+<ol>
+<li>Number of relevant peer-reviewed EIS studies</li>
+<li>Methodological rigor and quality of literature</li>
+<li>Strength of biophysical relationship between EIS and tissue freshness</li>
+<li>Availability and codification of measurable freshness ground truth</li>
+<li>Standardized storage protocols in literature</li>
+<li>Sensitivity to and documentation of temperature conditions</li>
+<li>Availability of numerical impedance data</li>
+<li>Availability of frequency-dependent spectral data</li>
+<li>Practical suitability for a benchtop laboratory prototype</li>
+<li>Scientific suitability for mapping to a continuous 0–100% freshness score</li>
+</ol>
+<hr>
+<h3>Candidate 1: Freshwater Fish (Crucian Carp, <em>Carassius auratus</em> / Tilapia, <em>Oreochromis niloticus</em>)</h3>
+<ul>
+<li><strong>EIS Literature Depth:</strong> Extensive and highly focused. Dozens of dedicated peer-reviewed papers in high-impact journals (<em>Journal of Food Engineering</em>, <em>Journal of Food Quality</em>, <em>Sensors</em>, <em>Journal of Food Process Engineering</em>).</li>
+<li><strong>Biophysical Relationship:</strong> Exceptionally direct. Freshwater fish muscle possesses high water content (~78–82%) and delicate cellular structures with thin perimysial connective tissue. Post-mortem autolytic cellular lysis and bacterial proliferation occur rapidly, producing an unambiguous, monotonic collapse of β-dispersion impedance within 6–8 days at 4°C.</li>
+<li><strong>Freshness Ground Truth:</strong> Codified by national and international legal standards (e.g., Chinese Standard GB 2733-2015):<ul>
+<li>Total Volatile Basic Nitrogen (TVB-N): Fresh ≤ 15 mg N/100g; Secondary Fresh 15 - 20 mg/100g; Spoiled &gt; 20 mg N/100g.</li>
+<li>Total Viable Count (TVC): Fresh &lt; 5.0 log₁₀ CFU/g; Threshold of spoilage 7.0 log₁₀ CFU/g.</li>
+</ul>
+</li>
+<li><strong>Storage Protocols &amp; Temperature:</strong> Standardized refrigerated storage at 4°C (or ice storage at 0°C). Temperature coefficients well characterized (~-1.56%/°C).</li>
+<li><strong>Spectral Data:</strong> Broad sweeps (100 Hz to 1 MHz) with specific discrete multi-frequency data (1 kHz, 4 kHz, 10 kHz, 100 kHz) and equivalent circuit parameter extractions (Rₑ, Rᵢ, Cₘ, α) readily available.</li>
+<li><strong>Laboratory Prototype Suitability:</strong> Excellent. Live or freshly sacrificed whole fish/fillets are readily accessible year-round at low cost; rapid 7-day spoilage cycle allows rapid experimental turnarounds; white dorsal muscle provides uniform, isotropic tissue slabs.</li>
+<li><strong>Fuzzy Suitability (0–100%):</strong> Outstanding. High dynamic range in impedance ratio (2.5 → 1.05) and phase (-18° → -2°) provides clear linear/sigmoidal mapping to a 0–100% score.</li>
+</ul>
+<hr>
+<h3>Candidate 2: Marine Fish (Gilthead Sea Bream, <em>Sparus aurata</em> / European Sea Bass / Salmon)</h3>
+<ul>
+<li><strong>EIS Literature Depth:</strong> Very high. Pioneering studies from Universitat Politècnica de València (Pérez-Esteve et al. 2014, Fuentes et al. 2013) and Mediterranean seafood research (<em>Food Control</em>, <em>IFSET</em>).</li>
+<li><strong>Biophysical Relationship:</strong> Strong, but confounded by high, variable lipid content (e.g., farmed salmon and sea bream can vary between 5% and 18% intramuscular fat depending on diet and season). High lipid content introduces dielectric variability that alters baseline impedance independently of freshness.</li>
+<li><strong>Freshness Ground Truth:</strong> TVB-N (EU Directive 95/149/EC: limit 25–35 mg N/100g depending on species); Sensory QIM; K-value.</li>
+<li><strong>Laboratory Suitability:</strong> Good, but higher procurement cost and seasonal variations in fat content reduce repeatability compared to lean freshwater species.</li>
+<li><strong>Fuzzy Suitability:</strong> Strong, but requires fat-content compensation terms.</li>
+</ul>
+<hr>
+<h3>Candidate 3: Poultry (Broiler Chicken Breast, <em>Pectoralis major</em>)</h3>
+<ul>
+<li><strong>EIS Literature Depth:</strong> Moderate to High. Recent high-quality studies on handheld impedance meters (Shinji et al. 2026) and frozen-thawed discrimination (Wang et al. 2016).</li>
+<li><strong>Biophysical Relationship:</strong> Moderate to Good. Impedance ratio (2 kHz / 100 kHz) drops from ~2.45 to ~1.15 over 10 days of chilled storage.</li>
+<li><strong>Freshness Ground Truth:</strong> K-value (ATP breakdown), TVC, pH.</li>
+<li><strong>Key Limitations:</strong> <ol>
+<li>Spoilage in intact poultry breast is predominantly surface microbial proliferation (<em>Pseudomonas</em> producing surface slime), whereas deep tissue autolysis occurs at a different kinetic rate. Needle insertion measures internal muscle, potentially missing early surface spoilage.</li>
+<li>Susceptibility to post-mortem &quot;woody breast&quot; or &quot;white striping&quot; myopathies alters baseline membrane capacitance.</li>
+</ol>
+</li>
+</ul>
+<hr>
+<h3>Candidate 4: Red Meat — Beef (<em>Longissimus dorsi</em> / <em>Semimembranosus</em>)</h3>
+<ul>
+<li><strong>EIS Literature Depth:</strong> Very high, but primarily focused on <strong>aging/tenderization</strong> rather than microbial spoilage (Damez et al. 2008; Byrne et al. 2001).</li>
+<li><strong>Biophysical Relationship:</strong> Highly confounded. In beef, industrial practice relies on deliberate cold aging for 14 to 28+ days to allow enzymatic tenderization. Differentiating beneficial enzymatic aging from undesirable microbial spoilage via EIS is complex and non-linear.</li>
+<li><strong>Structural Anisotropy Problem:</strong> Extreme. Damez et al. (2008) demonstrated that raw beef impedance varies by <strong>200% to 300%</strong> depending on whether needles are aligned parallel or perpendicular to muscle fibers (Z⊥ / Z∥ ≈ 2.5). Any slight tilt or misalignment in a handheld probe creates errors larger than 5 days of aging!</li>
+<li><strong>Laboratory Suitability:</strong> Poor for initial prototype due to multi-week testing cycles and high cost.</li>
+</ul>
+<hr>
+<h3>Candidate 5: Red Meat — Pork (<em>Longissimus dorsi</em>)</h3>
+<ul>
+<li><strong>EIS Literature Depth:</strong> High foundational literature (Pliquett et al. 2003).</li>
+<li><strong>Biophysical Relationship:</strong> Severely confounded by post-mortem glycolysis anomalies. Pork frequently suffers from Pale, Soft, Exudative (PSE) or Dark, Firm, Dry (DFD) conditions immediately following slaughter due to acute pre-slaughter stress. PSE meat exhibits massive early cell membrane damage and drip loss, mimicking spoiled meat within 24 hours post-mortem.</li>
+<li><strong>Fuzzy Suitability:</strong> Poor for early prototypes due to high false-positive spoilage rates from stress defects.</li>
+</ul>
+<hr>
+<h3>Candidate 6: Fruits (Apples, <em>Malus domestica</em> / Bananas / Citrus)</h3>
+<ul>
+<li><strong>EIS Literature Depth:</strong> Moderate to High (Harker &amp; Forbes 1997; Rehman et al. 2018).</li>
+<li><strong>Biophysical Relationship:</strong> Fundamentally different mechanism. Fruit &quot;freshness&quot; is developmental ripening and physiological senescence (pectin solubilization, starch conversion, cell wall loosening), not microbial spoilage.</li>
+<li><strong>Freshness Ground Truth:</strong> Firmness (Penetrometer in N), Soluble Solids Content (°Brix), Titratable Acidity. No chemical TVB-N or bacterial count applies.</li>
+<li><strong>Testing Duration:</strong> Senescence takes 30–90 days in refrigerated storage.</li>
+<li><strong>Fuzzy Suitability:</strong> Unsuitable for a generic &quot;freshness/spoilage&quot; 0–100% score; requires cultivar-specific ripening indices.</li>
+</ul>
+<hr>
+<h2 id="section-2">2. Comparative Food Ranking Table</h2>
+<section class="comparison" aria-label="Food comparison"><p class="hint">All eight columns are preserved. Scroll sideways on smaller screens; the food column stays visible. Printing uses landscape pages.</p><div class="table-scroll" tabindex="0" role="region" aria-label="Full comparison table"><table>
+<thead>
+<tr>
+<th align="left">Candidate Food</th>
+<th align="left">EIS Literature Volume &amp; Quality</th>
+<th align="left">Numerical &amp; Spectral Data Availability</th>
+<th align="left">Measurable Ground Truth Codification</th>
+<th align="left">Structural Homogeneity &amp; Isotropy</th>
+<th align="left">Spoilage Dynamics &amp; Lab Cycle</th>
+<th align="left">Overall Fuzzy Suitability</th>
+<th align="left">Prototype Recommendation</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><strong>Freshwater Fish</strong> <em>(Crucian Carp / Tilapia)</em></td>
+<td align="left"><strong>High</strong> (Peer-reviewed JFE, JFQ, Sensors)</td>
+<td align="left"><strong>High</strong> (Discrete 1k–100k Hz, Cole-Cole Rₑ, Rᵢ, Cₘ)</td>
+<td align="left"><strong>Very High</strong> (Codified TVB-N ≤ 15 to &gt;20 mg/100g, TVC)</td>
+<td align="left"><strong>High</strong> (Low connective tissue, uniform white myotomes)</td>
+<td align="left"><strong>Optimal</strong> (0–8 days at 4°C, rapid cycles)</td>
+<td align="left"><strong>Very High</strong> (Monotonic 2.5 → 1.05 ratio drop)</td>
+<td align="left"><strong>RANK 1: RECOMMENDED FOR FIRST PROTOTYPE</strong></td>
+</tr>
+<tr>
+<td align="left"><strong>Marine Fish</strong> <em>(Sea Bream / Sea Bass)</em></td>
+<td align="left"><strong>High</strong> (Food Control, IFSET)</td>
+<td align="left"><strong>High</strong> (1 Hz – 100 kHz spectra available)</td>
+<td align="left"><strong>High</strong> (TVB-N EU limits, QIM sensory)</td>
+<td align="left"><strong>Moderate</strong> (Inter-batch fat variations 5–18%)</td>
+<td align="left"><strong>Good</strong> (0–12 days at 4°C)</td>
+<td align="left"><strong>High</strong> (Requires fat normalization)</td>
+<td align="left"><strong>RANK 2: Secondary Candidate</strong></td>
+</tr>
+<tr>
+<td align="left"><strong>Broiler Chicken Breast</strong></td>
+<td align="left"><strong>Moderate-High</strong> (ASJ 2026, Meat Sci)</td>
+<td align="left"><strong>Moderate</strong> (2 kHz &amp; 100 kHz dual ratios)</td>
+<td align="left"><strong>High</strong> (K-value, TVC, pH)</td>
+<td align="left"><strong>Moderate</strong> (Surface vs core spoilage decoupling)</td>
+<td align="left"><strong>Good</strong> (0–10 days at 4°C)</td>
+<td align="left"><strong>Moderate-High</strong> (Well-correlated dual ratio)</td>
+<td align="left"><strong>RANK 3: Viable Alternative</strong></td>
+</tr>
+<tr>
+<td align="left"><strong>Pork</strong> <em>(Longissimus dorsi)</em></td>
+<td align="left"><strong>High</strong> (Foundational Meat Sci)</td>
+<td align="left"><strong>Moderate</strong> (Pᵧ-parameter data available)</td>
+<td align="left"><strong>Moderate</strong> (Drip loss, pH, TVC)</td>
+<td align="left"><strong>Moderate</strong> (PSE/DFD defects alter baseline)</td>
+<td align="left"><strong>Moderate</strong> (Early post-slaughter glycolysis confounds)</td>
+<td align="left"><strong>Low-Moderate</strong> (High false-positive risk)</td>
+<td align="left"><strong>RANK 4: Not Recommended for Prototype</strong></td>
+</tr>
+<tr>
+<td align="left"><strong>Beef</strong> <em>(Striploin / Semimembranosus)</em></td>
+<td align="left"><strong>High</strong> (JFE, Agriculture)</td>
+<td align="left"><strong>High</strong> (Spectra &amp; anisotropy data)</td>
+<td align="left"><strong>Moderate</strong> (Aging tenderness vs TVC spoilage)</td>
+<td align="left"><strong>Very Low</strong> (200–300% fiber anisotropy variation)</td>
+<td align="left"><strong>Poor</strong> (14–28 days aging cycle)</td>
+<td align="left"><strong>Low</strong> (Directional angle swamps freshness signal)</td>
+<td align="left"><strong>RANK 5: Not Recommended for Prototype</strong></td>
+</tr>
+<tr>
+<td align="left"><strong>Fruit</strong> <em>(Apple / Banana)</em></td>
+<td align="left"><strong>Moderate</strong> (JFE, Sensors)</td>
+<td align="left"><strong>Moderate</strong> (Cole-Cole plots, high resistance)</td>
+<td align="left"><strong>Moderate</strong> (Firmness N, Brix; no TVB-N)</td>
+<td align="left"><strong>Moderate</strong> (Cultivar, peel, core variations)</td>
+<td align="left"><strong>Poor</strong> (30–60 days storage cycle)</td>
+<td align="left"><strong>Low</strong> (Senescence is non-monotonic ripening)</td>
+<td align="left"><strong>RANK 6: Unsuitable for Microbial Model</strong></td>
+</tr>
+</tbody></table>
+</div></section><hr>
+<h2 id="section-3">3. Definitive Recommendation and Technical Justification</h2>
+<h3>Recommendation: <strong>Freshwater Fish Muscle (Crucian Carp, <em>Carassius auratus</em>, or Tilapia, <em>Oreochromis niloticus</em>)</strong></h3>
+<h3>Technical Justification:</h3>
+<ol>
+<li><strong>Unambiguous Ground Truth Alignment [LITERATURE]:</strong> Freshwater fish has legally enforceable, scientifically validated chemical thresholds:<ul>
+<li>Fresh (Score 70–100%): TVB-N ≤ 15.0 mg N / 100g, TVC &lt; 5.0 log₁₀ CFU/g.</li>
+<li>Secondary Fresh / Limit of Acceptability (Score 35–70%): TVB-N = 15.0 - 20.0 mg N / 100g.</li>
+<li>Spoiled (Score 0–35%): TVB-N &gt; 20.0 mg N / 100g, TVC &gt; 7.0 log₁₀ CFU/g.</li>
+</ul>
+</li>
+<li><strong>Predictable Spoilage Kinetics [LITERATURE]:</strong> Unlike beef, which requires weeks of aging, fish muscle spoils predictably within <strong>6 to 8 days under standard 4°C refrigeration</strong>. This permits complete experimental validation cycles in a single working week.</li>
+<li><strong>Low Structural Anisotropy [LITERATURE]:</strong> Fish white muscle consists of short, segmented muscle fibers (myotomes) bound by delicate myocommata. It possesses significantly lower collagen and connective tissue content (~3%) compared to mammalian muscle (~10–15%), resulting in much lower directional impedance variation and higher probe repositioning repeatability.</li>
+<li><strong>Rich Literature Foundation [LITERATURE]:</strong> The studies by Sun et al. (2017, 2018, 2021) and Liang et al. (2020) provide comprehensive multi-frequency impedance and equivalent circuit parameters (Rₑ, Rᵢ, Cₘ) specifically for carp and tilapia under controlled storage conditions, directly enabling the design of our fuzzy rule base.</li>
+</ol>
+<hr>
+<h2 id="section-4">4. Extension: Indonesian Free Nutritious Meals Program (MBG) Multi-Ingredient Scope</h2>
+<p>To address institutional school lunch safety in Indonesia under the <strong>Program Makan Bergizi Gratis (MBG)</strong>, the model expands beyond freshwater fish to encompass the 5 primary raw perishables delivered to central catering kitchens (<em>Satuan Pelayanan MBG</em>):</p>
+<ol>
+<li><strong>Daging Ayam Broiler</strong> (<em>Broiler Chicken Breast / Fillet</em>): Primary protein across &gt;70% of MBG menus. Standardized by <strong>SNI 3924:2009</strong>. Evaluated via 4-electrode penetrating probe at 2 kHz / 100 kHz (<code>[LITERATURE: P09, P12]</code>).</li>
+<li><strong>Daging Sapi</strong> (<em>Bovine Beef Muscle</em>): High-nutrition animal protein for stewing/curry (rendang, semur). Standardized by <strong>SNI 3932:2008</strong>. Evaluated at 1 kHz / 100 kHz (<code>[LITERATURE: P10, P11]</code>) with mandatory transverse needle insertion to control for muscle fiber anisotropy.</li>
+<li><strong>Ikan Air Tawar (Ikan Nila &amp; Ikan Lele)</strong> (<em>Tilapia &amp; Catfish</em>): Core regional aquaculture protein in Java and Sumatra. Standardized by <strong>SNI 2729:2021</strong>. Evaluated at 4 kHz / 100 kHz (<code>[LITERATURE: P04, P13]</code>).</li>
+<li><strong>Ikan Laut Pelagis (Ikan Tongkol / Cakalang)</strong> (<em>Mackerel / Skipjack Tuna</em>): Core marine protein in coastal regions. Standardized by <strong>SNI 2729:2021 Annex B</strong>. Includes early warning penalty for Scombroid histamine accumulation under temperature abuse (&gt;10°C).</li>
+<li><strong>Susu Sapi Segar</strong> (<em>Fresh Cow&#39;s Milk</em>): Mandatory weekly nutritional beverage. Standardized by <strong>SNI 3141.1:2011</strong>. Evaluated via the <strong>same AD5933 four-electrode circuit</strong> operating in liquid immersion mode (<code>[MARGO: P01, P16, P17]</code>), measuring bulk electrolytic conductivity σ at 10 kHz coupled with direct pH sensing to detect bacterial lactic acidification.</li>
+<li><strong>Tempe Kedelai</strong> (<em>Fermented Soybean Cake</em>): National staple plant-based protein across &gt;90% of Indonesian school lunch cycles. Standardized by <strong>SNI 3142:2018</strong>. Evaluated via 4-electrode penetrating probe at 4 kHz / 100 kHz coupled with headspace NH₃ gas sensing. The dual-sensor configuration tracks intact fungal mycelial capacitance (<em>Rhizopus oligosporus</em>) and discriminates peak fermentation from over-fermented/proteolytic spoilage (<em>tempe busuk</em>, NH₃ &gt; 20 ppm).</li>
+<li><strong>Tahu Putih</strong> (<em>Fresh Soybean Curd / Tofu Block</em>): Daily plant-based protein with high water activity (a𝑤 ≈ 0.98, moisture 80–85%). Standardized by <strong>SNI 01-3144-1998</strong>. Evaluated via 4-electrode probe at 2 kHz / 100 kHz (<code>[LITERATURE: Li et al. 2011]</code>) and headspace NH₃. Tracks protein gel matrix degradation, syneresis, and bacterial liquefaction/slime formation.</li>
+</ol>
+<footer>Source: 02_FOOD_SELECTION.md · Formatting copy with offline mathematical notation. Scientific statements are reproduced from the source.</footer></main></div></body></html>

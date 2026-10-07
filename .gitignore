@@ -1,0 +1,19 @@
+/bin/
+/build/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+*.o
+*.so
+*.elf
+*.bin
+*.hex
+*.map
+.env
+.env.*
+.DS_Store
+# Separate project and unrelated local writing; retain them on disk.
+/Dashboard/
+/sub_bab_4_2_1_tinjauan_pustaka.txt
